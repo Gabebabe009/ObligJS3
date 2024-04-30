@@ -13,7 +13,7 @@ public class TicketRepo {
 
     public void saveTicket(tickets ticket) {
         String sql = "INSERT INTO ticket (movies, number, firstname, lastname, phonenr,mail)VALUES(?,?,?,?,?,?)";
-        db.update(sql,ticket.getMovies(),ticket.getNumber(),ticket.getFirstname(), ticket.getLastname(), ticket.getMail(), ticket.getPhonenumber());
+        db.update(sql,ticket.getMovies(),ticket.getNumber(),ticket.getFirstname(), ticket.getLastname(), ticket.getMail(), ticket.getPhonenr());
     }
     public List<tickets> catchAll() {
         String sql = "SELECT * FROM Billet";
