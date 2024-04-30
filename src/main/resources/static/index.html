@@ -2,9 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Colosseum Cinema</title>
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
 
-</body>
-</html>
+<h1>Booking tickets</h1>
+
+<label for="movies">Movie : </label>
+
+<select id="movies"> <!--Source used: https://www.javatpoint.com/javascript-select-option-->
+    <option value="Choose your movie here"> Choose your movie here  </option>
+    <option value="Saltburn">Saltburn</option>
+    <option value="Pulp Fiction">Pulp Fiction</option>
+    <option value="Fight club">Fight club</option>
+    <option value="Se7en">Se7en</option>
+    <option value="Interstellar">Interstellar</option>
+    <option value="The Silence of the Lambs">The Silence of the Lambs</option>
+</select>
+
+<br>
+<br>
+
+<label for="number"> Number &nbsp;</label> <!--Source for &nbsp; : https://mailtrap.io/blog/nbsp/ -->
+<input id="number" type="text">
+<br>
+<span id="wrongNumber" style="color: #947dd2"></span> <!--Source used: https://stackoverflow.com/questions/4182554/html-css-font-color-vs-span-style-->
+
+<br>
+<br>
+
+<label for="firstname">First Name  &nbsp;</label>
+<input id="firstname" type="text">
+<br>
+<span id="wrongFristName" style="color: #947dd2"></span>
+
+<br>
+<br>
+
+<label for="lastname">Last Name &nbsp; </label>
+<input id="lastname" type="text">
+<br>
+<span id="wrongLastName" style="color: #947dd2"></span>
+
+<br>
+<br>
+
+<label for="phonenr">Phone Number &nbsp; </label>
+<input id="phonenr" type="text">
+<br>
+<span id="wrongPhoneNr" style="color: #947dd2"></span>
+
+<br>
+<br>
+
+<label for="mail">E-mail &nbsp; </label>
+<input id="mail" type="text">
+<br>
+<span id="wrongMail" style="color: #947dd2"></span>
+
+<br>
+<br>
+
+<button onclick="buyTicket()">Kjøp billett</button>
+
+<h2>All your tickets</h2>
+
+<div id="utskrift"></div>
+
+<br>
+<br>
+
+<button onclick="deleteTickets()">Delete tickets</button>
+
+<br>
+<br>
+
+<br>
+<br>
+
