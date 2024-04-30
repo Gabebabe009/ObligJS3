@@ -4,7 +4,7 @@ OsloMet brukernavn: gabal8187
 
 GitHub brukernavn: gabebabe009
 
-GitHub repo URL:
+GitHub repo URL: https://github.com/Gabebabe009/ObligJS3.git
 
 Fullt navn: Gabija Baltrunaite
 
