@@ -1,6 +1,6 @@
 let tickets = [];  //Her endres  arrayet fra buyTicket til å være globalt tilgjengelig slik at vi kan bruke det senere i deleteTickets
 
-function buyTicket() {
+function buyTickets() {
 
     let chosenMovie = document.getElementById("movies").value;
     let wrongNumber = document.getElementById("number").value;
@@ -10,11 +10,11 @@ function buyTicket() {
     let chosenEmail = document.getElementById("mail").value;
 
     const ticket1 = {  //Oppretter et objekt og legger inn de opprettede variablene.
-        movie: chosenMovie,
+        movies: chosenMovie,
         number: wrongNumber,
-        firstName: chosenFirstName,
-        lastName: chosenLastName,
-        phoneNr: chosenPhoneNr,
+        firstname: chosenFirstName,
+        lastname: chosenLastName,
+        phonenr: chosenPhoneNr,
         mail: chosenEmail
     };
 
@@ -24,6 +24,7 @@ function buyTicket() {
     if (wrongNumber === "" || isNaN(wrongNumber) || wrongNumber < 1) {
         document.getElementById("wrongNumber").innerHTML = "You have to write in an amount from 1-->";
         isValid = false;
+        document.getElementById("number").value = "";
     } else {
         document.getElementById("wrongNumber").innerHTML = "";
     }
@@ -32,6 +33,7 @@ function buyTicket() {
     if (chosenFirstName === "") {
         document.getElementById("wrongFristName").innerHTML = "Write in a first name";
         isValid = false;
+        document.getElementById("firstname").value = "";
     } else {
         document.getElementById("wrongFristName").innerHTML = "";
     }
@@ -40,6 +42,7 @@ function buyTicket() {
     if (chosenLastName === "") {
         document.getElementById("wrongLastName").innerHTML = "Write in a last name";
         isValid = false;
+        document.getElementById("lastname").value = "";
     } else {
         document.getElementById("wrongLastName").innerHTML = "";
     }
@@ -48,6 +51,7 @@ function buyTicket() {
     if (chosenPhoneNr === "" || !/^\d{8}$/.test(chosenPhoneNr)) {
         document.getElementById("wrongPhoneNr").innerHTML = "Phone number must contain 8 digits";
         isValid = false;
+        document.getElementById("phonenr").value = "";
     } else {
         document.getElementById("wrongPhoneNr").innerHTML = "";
     }
@@ -56,17 +60,20 @@ function buyTicket() {
     if (chosenEmail === "" || !chosenEmail.includes('@')) {
         document.getElementById("wrongMail").innerHTML = "Enter a valid email address";
         isValid = false;
+        document.getElementById("mail").value = "";
     } else {
         document.getElementById("wrongMail").innerHTML = "";
     }
 
     if (isValid) {
-        tickets.push(ticket1);
         console.log(tickets);
-        printOut();
+        $.post("/save", ticket1, function(data){
+            getAll();
+            document.getElementById("data").value = "";
+        });
     }
 }
-function printOut() { //kjører gjennom en for-løkke for å skrive ut verdier vi har laget i objektet og satt inn i arrayet.
+function printOut(tickets) { //kjører gjennom en for-løkke for å skrive ut verdier vi har laget i objektet og satt inn i arrayet.
     let ut = "";
     for (let i = 0; i < tickets.length; i++) {
         ut += tickets[i].movies + " " + tickets[i].number + " " + tickets[i].firstname
@@ -77,8 +84,15 @@ function printOut() { //kjører gjennom en for-løkke for å skrive ut verdier v
     console.log(ut);
 }
 
+function getAll() {
+    $.get("/getAll", function(data){
+        printOut(data)
+    });
+}
 function deleteTickets(){
-    tickets = [];
-    console.log(tickets);
-    printOut();
+    if(document.getElementById("utskrift").innerHTML !==""){
+        $.get("/deleteAll", function(){
+            document.getElementById("utskrift").innerHTML="";
+        });
+    }
 }

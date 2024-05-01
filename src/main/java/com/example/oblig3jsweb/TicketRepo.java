@@ -12,15 +12,15 @@ public class TicketRepo {
     private JdbcTemplate db;
 
     public void saveTicket(tickets ticket) {
-        String sql = "INSERT INTO ticket (movies, number, firstname, lastname, phonenr,mail)VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO Ticketregister (movies, number, firstname, lastname, phonenr,mail)VALUES(?,?,?,?,?,?)";
         db.update(sql,ticket.getMovies(),ticket.getNumber(),ticket.getFirstname(), ticket.getLastname(), ticket.getMail(), ticket.getPhonenr());
     }
     public List<tickets> catchAll() {
-        String sql = "SELECT * FROM Billet";
+        String sql = "SELECT * FROM Ticketregister";
         return db.query(sql, new BeanPropertyRowMapper(tickets.class));
     }
     public void deleteAll() {
-        String sql = "DELETE FROM tickets";
+        String sql = "DELETE FROM Ticketregister";
         db.update(sql);
     }
 }

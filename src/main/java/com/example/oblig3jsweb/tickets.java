@@ -2,13 +2,13 @@ package com.example.oblig3jsweb;
 
 public class tickets {
     private String movies;
-    private int number;
+    private String number;
     private String firstname;
     private String lastname;
-    private int phonenr;
+    private String phonenr;
     private String mail;
 
-    public tickets(String movies, int number, String firstname, String lastname, int phonenumber, String mail) {
+   /* public tickets(String movies, String number, String firstname, String lastname, String phonenr, String mail) {
         this.movies = movies;
         this.number = number;
         this.firstname = firstname;
@@ -16,6 +16,7 @@ public class tickets {
         this.phonenr = phonenr;
         this.mail = mail;
     }
+    */
 
     public String getMovies() {
         return movies;
@@ -25,11 +26,11 @@ public class tickets {
         this.movies = movies;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -49,11 +50,11 @@ public class tickets {
         this.lastname = lastname;
     }
 
-    public int getPhonenr() {
+    public String getPhonenr() {
         return phonenr;
     }
 
-    public void setPhonenr(int phonenr) {
+    public void setPhonenr(String phonenr) {
         this.phonenr = phonenr;
     }
 
